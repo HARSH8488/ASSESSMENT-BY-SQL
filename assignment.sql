@@ -99,8 +99,7 @@ department_id,salary,UPPER(REPLACE(first_name, 'z', '$!')) AS modified_first_nam
 SELECT CONCAT(LOWER(SUBSTRING(LAST_NAME,1,1)),LOWER(SUBSTRING(LAST_NAME,2))) AS "LAST_NAME FORMATTED" FROM EMPLOYEES  WHERE LAST_NAME LIKE 'J%' OR LAST_NAME LIKE 'A%' OR LAST_NAME LIKE 'M%' ORDER BY LAST_NAME;
 
 -- 6. Create a query to display the last name and salary for all employees. Format the salary to be 15 characters long, left-padded with $. Label the column SALARY
-select last_name,concat(salary,'$') as salary from employees;
-select last_name,lpad(salary,15,'$') as SALARY from employees;
+SELECT last_name,CONCAT('$', LPAD(salary, 15, '$')) AS SALARY FROM employees;
 
 -- 7. Display the employee's name if it is a palindrome 
 select first_name as palindromeEmployees from employees where lower(first_name) =lower(reverse(first_name));
